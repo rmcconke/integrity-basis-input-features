@@ -17,7 +17,7 @@ The main input is the `cases` dictionary. In this dictionary, you specify which 
     'cont_terms': [0,1]
 },
 ```
-Means that the *z*-component of the velocity vector (*U*,*V*,*W*) is zero, and *U* and *V* only depend on the *x* and *y* coordinates. Therefore, the partial derivative ∂*U*/∂*z* is zero (likewise for *V*). The scalars *a* and *b* also only depend on the *x* and *y* coordinates. Lastly, the `cont_terms` entry needs to be provided. The purpose of this entry is to check if a given input feature is zero due to the continuity condition: ∂*U*/∂*x* + ∂*V*/∂*y* + ∂*W*/∂*z* = 0. We specify which terms appear in the continuity equation for this flow. In the above example, the *x* (which is index 0), and *y* (index 1) terms appear. The *z* term is index 2.
+Means that the *z*-component of the velocity vector (*U*,*V*,*W*) is zero, and *U* and *V* only depend on the *x* and *y* coordinates. Therefore, the partial derivative ∂*U*/∂*z* is zero (likewise for *V*). The scalars *a* and *b* also only depend on the *x* and *y* coordinates. Lastly, the `cont_terms` entry needs to be provided. The purpose of this entry is to check if a given input feature is zero due to the continuity condition: ∂*U*/∂*x* + ∂*V*/∂*y* + ∂*W*/∂*z* = 0. We specify which terms appear in the continuity equation for this flow. In the above example, the *x* (which is index 0), and *y* (index 1) terms appear. The *z* term is index 2. If `cont_terms` is left as `None`, then all cont terms will be included in the continuity expression.
 
 
 
