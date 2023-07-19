@@ -130,6 +130,14 @@ def evaluate_basis_tensor_invariants(gradU,Aa,Ab,cont_terms=None):
 
 results = pd.DataFrame()
 cases = {
+    'DUCT': {
+        'U': sp.Function('U')(y,z),
+        'V': 0,
+        'W': 0,
+        'a': sp.Function('a')(y,z),
+        'b': sp.Function('b')(y,z),
+        'cont_terms': None
+    },
     '2D_XY': {
         'U': sp.Function('U')(x,y),
         'V': sp.Function('V')(x,y),
@@ -154,14 +162,6 @@ cases = {
         'b': sp.Function('b')(y,z),
         'cont_terms': [1,2]
     },
-    'DUCT': {
-        'U': sp.Function('U')(y,z),
-        'V': 0,
-        'W': 0,
-        'a': sp.Function('a')(y,z),
-        'b': sp.Function('b')(y,z),
-        'cont_terms': None
-    }
 }
 
 results['Tensor_name'] =['B%d' % i for i in range(1, 48)]
@@ -175,6 +175,7 @@ for case in cases.keys():
     else: cont_terms = None
     results[f'{case}_I1'], results[f'{case}_I2'] = evaluate_basis_tensor_invariants(gradU,Aa,Ab,cont_terms)
 
+results.to_csv('output.csv')
 print(results)
 
 
